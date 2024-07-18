@@ -38,8 +38,8 @@ jobs:
           ini-values: error_reporting=E_ALL
           tools: composer:v2
           coverage: none
-          env:
-            runner: self-hosted
+        env:
+          runner: self-hosted
 
       - name: Install dependencies
         run: |
