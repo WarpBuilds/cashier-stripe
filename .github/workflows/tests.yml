@@ -11,17 +11,19 @@ on:
 
 jobs:
   tests:
-    runs-on: [ubuntu-latest, warp-ubuntu-latest-x64-2x, warp-ubuntu-latest-x64-4x, warp-ubuntu-latest-x64-8x, warp-ubuntu-latest-x64-16x]
+     
 
     strategy:
       fail-fast: true
       matrix:
+      os: [ubuntu-latest, warp-ubuntu-latest-x64-2x, warp-ubuntu-latest-x64-4x, warp-ubuntu-latest-x64-8x, warp-ubuntu-latest-x64-16x]
         php: [8.1, 8.2, 8.3]
         laravel: [10, 11]
         exclude:
           - php: 8.1
             laravel: 11
 
+    runs-on: ${{matrix.os}}
     name: PHP ${{ matrix.php }} - Laravel ${{ matrix.laravel }}
 
     steps:
